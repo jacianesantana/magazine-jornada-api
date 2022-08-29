@@ -15,10 +15,10 @@ import javax.validation.constraints.Email;
 public class UserRequest {
 
     private UserType userType;
-    private String nome;
+    private String name;
     @Email
     private String email;
-    private String fotoDePerfil;
-    private String senha;
+    private String profilePicture;
+    private String password;
 
 }

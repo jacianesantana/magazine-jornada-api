@@ -1,20 +1,28 @@
 package com.magazinejornada.api.model;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import lombok.*;
+
+import javax.persistence.*;
 import javax.validation.constraints.Email;
 
+@Entity
+@Getter
+@Setter
+@ToString
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+@Table(name = "userTable")
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private UserType userType;
-    private String nome;
+    private String name;
     @Email
     private String email;
-    private String fotoDePerfil;
-    private String senha;
+    private String profilePicture;
+    private String password;
 
 }
