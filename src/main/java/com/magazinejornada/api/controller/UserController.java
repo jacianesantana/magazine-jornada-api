@@ -1,6 +1,5 @@
 package com.magazinejornada.api.controller;
 
-import com.magazinejornada.api.adapter.UserAdapter;
 import com.magazinejornada.api.controller.request.UserRequest;
 import com.magazinejornada.api.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -9,10 +8,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.util.UriComponentsBuilder;
 
 import javax.validation.Valid;
-import java.net.URI;
 
 @RestController
 @RequiredArgsConstructor
@@ -20,14 +17,11 @@ import java.net.URI;
 public class UserController {
 
     private final UserService userService;
-    private final UserAdapter userAdapter;
 
     @PostMapping("/register-user")
-    public ResponseEntity<Void> registerUser(@Valid @RequestBody UserRequest userRequest, UriComponentsBuilder uriBuilder) {
+    public ResponseEntity<Void> registerUser(@Valid @RequestBody UserRequest userRequest) {
         userService.save(userRequest);
-        var user = userAdapter.toUser(userRequest);
-        URI uri = uriBuilder.path("/user/{id}").buildAndExpand(user.getId()).toUri();
-        return ResponseEntity.created(uri).build();
+        return ResponseEntity.ok().build();
     }
 
 }
