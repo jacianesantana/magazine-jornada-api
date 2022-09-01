@@ -2,6 +2,7 @@ package com.magazinejornada.api.service;
 
 import com.magazinejornada.api.adapter.UserAdapter;
 import com.magazinejornada.api.controller.request.UserRequest;
+import com.magazinejornada.api.model.User;
 import com.magazinejornada.api.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -14,7 +15,7 @@ public class UserService {
     private final UserAdapter userAdapter;
 
     public void save(UserRequest userRequest) {
-        var user = userAdapter.toUser(userRequest);
+        User user = userAdapter.toUser(userRequest);
         userRepository.save(user);
     }
 
