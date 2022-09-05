@@ -13,12 +13,12 @@ import javax.validation.Valid;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("magazinejornada")
+@RequestMapping("user")
 public class UserController {
 
     private final UserService userService;
 
-    @PostMapping("/register-user")
+    @PostMapping
     public ResponseEntity<Void> registerUser(@Valid @RequestBody UserRequest userRequest) {
         userService.save(userRequest);
         return ResponseEntity.ok().build();
