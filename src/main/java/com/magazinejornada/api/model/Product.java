@@ -3,6 +3,7 @@ package com.magazinejornada.api.model;
 import lombok.*;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 
 @Entity
 @Getter
@@ -20,6 +21,6 @@ public class Product {
     private String title;
     private String description;
     private Long quantity;
-    private Double price;
+    private BigDecimal price;
     private String picture;
 }
