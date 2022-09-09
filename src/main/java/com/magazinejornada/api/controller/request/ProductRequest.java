@@ -16,4 +16,5 @@ public class ProductRequest {
     private Long quantity;
     private Double price;
     private String picture;
+
 }
