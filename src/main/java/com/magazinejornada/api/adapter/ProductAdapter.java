@@ -17,8 +17,8 @@ public class ProductAdapter {
                 .picture(productRequest.getPicture())
                 .build();
     }
-
-    public ProductResponse productResponse(Product product) {
+    
+    public ProductResponse toProductResponse(Product product) {
         return ProductResponse.builder()
                 .id(product.getId())
                 .title(product.getTitle())
