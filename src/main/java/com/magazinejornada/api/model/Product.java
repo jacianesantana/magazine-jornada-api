@@ -23,4 +23,5 @@ public class Product {
     private Long quantity;
     private BigDecimal price;
     private String picture;
+
 }
