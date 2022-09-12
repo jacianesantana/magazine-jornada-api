@@ -2,7 +2,7 @@
 O Magazine Jornada é um e-commerce focado em vender produtos para computadores, celulares e notebooks em geral.
 
 ## Projeto Jornada Tech v2 com o mentor Maicon Gerardi 
-- Desenvolvedores: Bruno Alves, Guilherme Militão, Jaciane Santana e Pedro Andrade
+- Desenvolvedores: Bruno Alves, Jaciane Santana e Pedro Andrade
 
 ## Requisitos Funcionais
 ### Funcionalidade Geral
@@ -36,15 +36,11 @@ O Magazine Jornada é um e-commerce focado em vender produtos para computadores,
 - Pode visualizar todos os pedidos realizados
 - Pode cancelar um pedido
 
-## Antes de executar a aplicação, é necessário:
-1. Ter o Docker instalado
-2. Java 11
-3. Baixar a imagem do Postgres com o comando: docker pull postgres
-4. Subir o container na sua máquina com o comando: sudo docker run --name postgres -p 5432:5432 -e POSTGRES_PASSWORD=root -e POSTGRES_DB=postgresdb -d postgres
-
 ## Stack
-- Java 11
+- Java 17
 - Spring Boot
+- Maven
 - Lombok
 - PostgreSQL
 - Docker
+- Swagger
