@@ -30,4 +30,6 @@ public class ProductService {
         return productAdapter.toProductResponse(productResponse);
     }
 
+    public void delete(long id) {
+    }
 }
