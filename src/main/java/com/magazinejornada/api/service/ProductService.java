@@ -9,6 +9,8 @@ import com.magazinejornada.api.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class ProductService {
@@ -21,6 +23,11 @@ public class ProductService {
         Product product = productAdapter.toProduct(productRequest);
         productRepository.save(product);
     }
+
+    public List<Product> listProduct(){
+        return productRepository.findAll();
+    }
+
     public ProductResponse update(Long id, UpdateProductRequest updateProductRequest){
         var product = productRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Product not found"));

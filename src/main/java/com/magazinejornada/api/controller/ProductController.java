@@ -27,16 +27,10 @@ public class ProductController {
         productService.save(productRequest);
         return ResponseEntity.ok().build();
     }
-    @Autowired
-    ProductRepository productRepository;
 
     @GetMapping("/products")
-    public List<Product> listProducts(){
-        return productRepository.findAll();
-    }
-    @GetMapping("/Product/{id}")
-    public Product listProduct(@PathVariable(value = "id") long id){
-        return productRepository.findById(id);
+    public List<Product> listProducts(@Valid @RequestBody ProductRequest productRequest){
+        return productService.listProduct();
     }
 
     @PutMapping("/{id}/update")
@@ -49,5 +43,4 @@ public class ProductController {
         productService.delete(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
-
 }
