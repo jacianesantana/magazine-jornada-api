@@ -10,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -24,8 +25,11 @@ public class ProductService {
         productRepository.save(product);
     }
 
-    public List<Product> listProduct(){
-        return productRepository.findAll();
+    public List<ProductResponse> listAll(){
+        return productRepository.findAll()
+                .stream()
+                .map(productAdapter::toProductResponse)
+                .collect(Collectors.toList());
     }
 
     public ProductResponse update(Long id, UpdateProductRequest updateProductRequest){
@@ -37,6 +41,10 @@ public class ProductService {
         return productAdapter.toProductResponse(productResponse);
     }
 
-    public void delete(long id) {
+    public void delete(Long id) {
+        var product = productRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Product not found"));
+        productRepository.delete(product);
     }
+
 }

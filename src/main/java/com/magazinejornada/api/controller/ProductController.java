@@ -28,9 +28,9 @@ public class ProductController {
         return ResponseEntity.ok().build();
     }
 
-    @GetMapping("/products")
-    public List<Product> listProducts(@Valid @RequestBody ProductRequest productRequest){
-        return productService.listProduct();
+    @GetMapping
+    public ResponseEntity<List<ProductResponse>> listProducts(){
+        return ResponseEntity.ok(productService.listAll());
     }
 
     @PutMapping("/{id}/update")
@@ -38,9 +38,11 @@ public class ProductController {
                                                          @RequestBody UpdateProductRequest updateProductRequest){
         return new ResponseEntity<>(productService.update(id, updateProductRequest), HttpStatus.OK);
     }
-    @DeleteMapping(path = "/{id}")
-    public ResponseEntity<Void> delete(@PathVariable long id){
+
+    @DeleteMapping("/{id}/delete")
+    public ResponseEntity<Void> delete(@PathVariable Long id){
         productService.delete(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+
 }
