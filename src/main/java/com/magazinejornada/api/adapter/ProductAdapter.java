@@ -15,6 +15,7 @@ public class ProductAdapter {
                 .quantity(productRequest.getQuantity())
                 .price(productRequest.getPrice())
                 .picture(productRequest.getPicture())
+                .partner(productRequest.getPartner())
                 .build();
     }
     
@@ -26,6 +27,7 @@ public class ProductAdapter {
                 .quantity(product.getQuantity())
                 .price(product.getPrice())
                 .picture(product.getPicture())
+                .partner(product.getPartner())
                 .build();
     }
 

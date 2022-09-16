@@ -28,8 +28,15 @@ public class ProductController {
     }
 
     @GetMapping
+
     public ResponseEntity<List<ProductResponse>> listProducts(){
         return ResponseEntity.ok(productService.listAll());
+    }
+
+    @GetMapping("/{partner}")
+    @PreAuthorize("hasRole('PARTNER')")
+    public ResponseEntity<List<ProductResponse>> listProductsPartner(@PathVariable Long partner) {
+        return ResponseEntity.ok(productService.listByPartner(partner));
     }
 
     @PutMapping("/{id}/update")

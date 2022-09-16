@@ -1,5 +1,6 @@
 package com.magazinejornada.api.controller.response;
 
+import com.magazinejornada.api.model.User;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -19,5 +20,6 @@ public class ProductResponse {
     private Long quantity;
     private BigDecimal price;
     private String picture;
+    private User partner;
 
 }

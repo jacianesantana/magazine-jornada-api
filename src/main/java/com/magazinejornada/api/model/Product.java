@@ -23,5 +23,8 @@ public class Product {
     private Long quantity;
     private BigDecimal price;
     private String picture;
+    @ManyToOne
+    @JoinColumn(name = "partner_id")
+    private User partner;
 
 }

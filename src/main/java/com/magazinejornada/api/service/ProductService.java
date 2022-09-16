@@ -32,6 +32,13 @@ public class ProductService {
                 .collect(Collectors.toList());
     }
 
+    public List<ProductResponse> listByPartner(Long partner) {
+        return productRepository.findById(partner)
+                .stream()
+                .map(productAdapter::toProductResponse)
+                .collect(Collectors.toList());
+    }
+
     public ProductResponse update(Long id, UpdateProductRequest updateProductRequest){
         var product = productRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Product not found"));
