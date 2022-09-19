@@ -24,7 +24,6 @@ public class User {
     @Email
     private String email;
     private String profilePicture;
-    private String username;
     private String password;
 
 }
