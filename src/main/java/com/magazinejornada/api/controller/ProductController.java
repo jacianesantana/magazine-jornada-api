@@ -7,7 +7,6 @@ import com.magazinejornada.api.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -21,20 +20,17 @@ public class ProductController {
     private final ProductService productService;
 
     @PostMapping
-    @PreAuthorize("hasRole('PARTNER')")
     public ResponseEntity<Void> registerProduct(@Valid @RequestBody ProductRequest productRequest) {
         productService.save(productRequest);
         return ResponseEntity.ok().build();
     }
 
     @GetMapping
-
     public ResponseEntity<List<ProductResponse>> listProducts(){
         return ResponseEntity.ok(productService.listAll());
     }
 
     @GetMapping("/{partner}")
-    @PreAuthorize("hasRole('PARTNER')")
     public ResponseEntity<List<ProductResponse>> listProductsPartner(@PathVariable Long partner) {
         return ResponseEntity.ok(productService.listByPartner(partner));
     }
