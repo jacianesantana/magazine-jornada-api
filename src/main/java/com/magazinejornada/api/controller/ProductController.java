@@ -29,11 +29,6 @@ public class ProductController {
         return ResponseEntity.ok(productService.listAll());
     }
 
-/*    @GetMapping("/{partner}")
-    public ResponseEntity<List<ProductResponse>> listProductsPartner(@PathVariable Long partner) {
-        return ResponseEntity.ok(productService.listByPartner(partner));
-    }*/
-
     @PutMapping("/{id}/update")
     public ResponseEntity<ProductResponse> updateProduct(@PathVariable Long id,
                                                          @RequestBody UpdateProductRequest updateProductRequest){
