@@ -9,7 +9,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -20,7 +19,7 @@ public class ProductController {
     private final ProductService productService;
 
     @PostMapping
-    public ResponseEntity<Void> registerProduct(@Valid @RequestBody ProductRequest productRequest) {
+    public ResponseEntity<Void> registerProduct(@RequestBody ProductRequest productRequest) {
         productService.save(productRequest);
         return ResponseEntity.ok().build();
     }
@@ -30,10 +29,10 @@ public class ProductController {
         return ResponseEntity.ok(productService.listAll());
     }
 
-    @GetMapping("/{partner}")
+/*    @GetMapping("/{partner}")
     public ResponseEntity<List<ProductResponse>> listProductsPartner(@PathVariable Long partner) {
         return ResponseEntity.ok(productService.listByPartner(partner));
-    }
+    }*/
 
     @PutMapping("/{id}/update")
     public ResponseEntity<ProductResponse> updateProduct(@PathVariable Long id,
@@ -42,9 +41,9 @@ public class ProductController {
     }
 
     @DeleteMapping("/{id}/delete")
-    public ResponseEntity<Void> delete(@PathVariable Long id){
+    public ResponseEntity<Void> deleteProduct(@PathVariable Long id){
         productService.delete(id);
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        return ResponseEntity.noContent().build();
     }
 
 }

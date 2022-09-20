@@ -1,7 +1,6 @@
 package com.magazinejornada.api.controller.request;
 
 
-import com.magazinejornada.api.model.User;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -20,6 +19,5 @@ public class ProductRequest {
     private Long quantity;
     private BigDecimal price;
     private String picture;
-    private User partner;
 
 }

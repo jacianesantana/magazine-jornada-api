@@ -4,7 +4,6 @@ import com.magazinejornada.api.adapter.ProductAdapter;
 import com.magazinejornada.api.controller.request.ProductRequest;
 import com.magazinejornada.api.controller.request.UpdateProductRequest;
 import com.magazinejornada.api.controller.response.ProductResponse;
-import com.magazinejornada.api.model.Product;
 import com.magazinejornada.api.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -21,7 +20,7 @@ public class ProductService {
     private final ProductAdapter productAdapter;
 
     public void save(ProductRequest productRequest) {
-        Product product = productAdapter.toProduct(productRequest);
+        var product = productAdapter.toProduct(productRequest);
         productRepository.save(product);
     }
 
@@ -32,12 +31,12 @@ public class ProductService {
                 .collect(Collectors.toList());
     }
 
-    public List<ProductResponse> listByPartner(Long partner) {
+/*    public List<ProductResponse> listByPartner(Long partner) {
         return productRepository.findById(partner)
                 .stream()
                 .map(productAdapter::toProductResponse)
                 .collect(Collectors.toList());
-    }
+    }*/
 
     public ProductResponse update(Long id, UpdateProductRequest updateProductRequest){
         var product = productRepository.findById(id)
